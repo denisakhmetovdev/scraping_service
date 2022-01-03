@@ -33,11 +33,14 @@ class CustomUser(AbstractBaseUser):
     first_name = models.CharField(max_length=35, verbose_name='Имя')
     last_name = models.CharField(max_length=35, verbose_name='Фамилия')
     patronymic = models.CharField(max_length=40, blank=True, null=True, verbose_name='Отчество')
-    phone = models.CharField(max_length=14,
-                             validators=[validators.RegexValidator(regex='^((8|\+7)[\- ]?)?[0-9]{10}$')])
+    # phone = models.CharField(max_length=14,
+    #                          validators=[validators.RegexValidator(regex='^((8|\+7)[\- ]?)?[0-9]{10}$')])
     date_joined = models.DateTimeField(verbose_name='Зарегистрирован', auto_now_add=True)
     is_active = models.BooleanField(default=True)
     admin = models.BooleanField(default=False)
+    city = models.ForeignKey('scraping.City', on_delete=models.SET_NULL, null=True, blank=True)
+    language = models.ForeignKey('scraping.Language', on_delete=models.SET_NULL, null=True, blank=True)
+    receive_email = models.BooleanField(default=True)
 
     objects = CustomUserManager()
 

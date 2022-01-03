@@ -10,7 +10,7 @@ class FindForm(forms.Form):
                                   label='Город'
                                   )
     language = forms.ModelChoiceField(queryset=Language.objects.all(),
-                                      to_field_name='slug', required=False, empty_label='Выберите ЯП',
+                                      to_field_name='slug', required=False, empty_label='Выберите язык программирования',
                                       widget=forms.Select(attrs={'class': 'form-control'}),
                                       label='Специальность'
                                       )
